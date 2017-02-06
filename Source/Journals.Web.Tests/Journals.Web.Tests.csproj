@@ -132,7 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PublisherControllerTest.cs" />
+    <Compile Include="Controllers\SubscriberControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\SubscriberRepositoryMock.cs" />
     <Compile Include="Repositories\JournalRepositoryMock.cs" />
     <Compile Include="Repositories\MemberShipRepositoryMock.cs" />
   </ItemGroup>

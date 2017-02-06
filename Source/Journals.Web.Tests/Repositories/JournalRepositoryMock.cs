@@ -25,7 +25,7 @@ namespace Medico.Web.Tests.Repositories
             return journalRepository;
         }
 
-        public List<Journal> FakeJournals()
+        private List<Journal> FakeJournals()
         {
             List<Journal> journalList = new List<Journal>
             {
