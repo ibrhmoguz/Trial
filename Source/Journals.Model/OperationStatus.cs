@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Journals.Model
+namespace Medico.Model
 {
     [DebuggerDisplay("Status: {Status}")]
     public class OperationStatus

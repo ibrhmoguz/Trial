@@ -1,10 +1,11 @@
-﻿using Journals.Model;
-using System;
+﻿using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using Medico.Model;
+using Medico.Repository.Interfaces;
 
-namespace Journals.Repository
+namespace Medico.Repository.Base
 {
     public class RepositoryBase<T> : IDisposable where T : DbContext, IDisposedTracker, new()
     {

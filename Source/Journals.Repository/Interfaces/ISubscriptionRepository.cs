@@ -1,7 +1,7 @@
-﻿using Journals.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Medico.Model;
 
-namespace Journals.Repository
+namespace Medico.Repository.Interfaces
 {
     public interface ISubscriptionRepository
     {

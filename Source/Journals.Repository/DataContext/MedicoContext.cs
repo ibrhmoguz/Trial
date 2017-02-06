@@ -1,8 +1,9 @@
-﻿using Journals.Model;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Medico.Model;
+using Medico.Repository.Interfaces;
 
-namespace Journals.Repository.DataContext
+namespace Medico.Repository.DataContext
 {
     public class JournalsContext : DbContext, IDisposedTracker
     {

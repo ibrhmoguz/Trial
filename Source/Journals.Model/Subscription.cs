@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Journals.Model
+namespace Medico.Model
 {
     public class Subscription
     {

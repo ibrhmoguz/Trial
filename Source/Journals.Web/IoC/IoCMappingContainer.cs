@@ -1,8 +1,9 @@
-﻿using Journals.Repository;
-using Journals.Web.Controllers;
+﻿using Medico.Repository.Interfaces;
+using Medico.Repository.Repo;
+using Medico.Web.Controllers;
 using Microsoft.Practices.Unity;
 
-namespace Journals.Web.IoC
+namespace Medico.Web.IoC
 {
     public static class IoCMappingContainer
     {

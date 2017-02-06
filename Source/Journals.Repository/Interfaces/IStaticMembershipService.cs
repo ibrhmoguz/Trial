@@ -1,6 +1,6 @@
 ﻿using System.Web.Security;
 
-namespace Journals.Repository
+namespace Medico.Repository.Interfaces
 {
     public interface IStaticMembershipService
     {

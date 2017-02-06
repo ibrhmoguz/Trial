@@ -1,14 +1,14 @@
-﻿using AutoMapper;
-using Journals.Model;
-using Journals.Repository;
-using Journals.Web.Filters;
-using Journals.Web.Helpers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Mvc;
+using AutoMapper;
+using Medico.Model;
+using Medico.Repository.Interfaces;
+using Medico.Web.Filters;
+using Medico.Web.Helpers;
 
-namespace Journals.Web.Controllers
+namespace Medico.Web.Controllers
 {
     [AuthorizeRedirect(Roles = "Publisher")]
     public class PublisherController : Controller
@@ -29,7 +29,7 @@ namespace Journals.Web.Controllers
             List<Journal> allJournals = _journalRepository.GetAllJournals(userId);
             var journals = Mapper.Map<List<Journal>, List<JournalViewModel>>(allJournals);
             return View(journals);
-        }
+        }   
 
         public ActionResult Create()
         {
@@ -91,7 +91,7 @@ namespace Journals.Web.Controllers
             var journal = _journalRepository.GetJournalById(Id);
 
             var selectedJournal = Mapper.Map<Journal, JournalUpdateViewModel>(journal);
-
+            
             return View(selectedJournal);
         }
 

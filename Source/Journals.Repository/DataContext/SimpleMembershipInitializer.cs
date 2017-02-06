@@ -1,6 +1,6 @@
 ﻿using WebMatrix.WebData;
 
-namespace Journals.Repository.DataContext
+namespace Medico.Repository.DataContext
 {
     public class SimpleMembershipInitializer
     {

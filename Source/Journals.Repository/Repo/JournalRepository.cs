@@ -1,12 +1,14 @@
-﻿using Journals.Model;
-using Journals.Repository.DataContext;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using Medico.Model;
+using Medico.Repository.Base;
+using Medico.Repository.DataContext;
+using Medico.Repository.Interfaces;
 
-namespace Journals.Repository
+namespace Medico.Repository.Repo
 {
     public class JournalRepository : RepositoryBase<JournalsContext>, IJournalRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace Journals.Repository
+﻿namespace Medico.Repository.Interfaces
 {
     public interface IDisposedTracker
     {
