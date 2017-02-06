@@ -14,6 +14,9 @@ namespace Medico.Web.Tests.Controllers
     [TestClass]
     public class SubscriberControllerTest
     {
+        /// <summary>
+        /// Indexes the returns all journals subscribers.
+        /// </summary>
         [TestMethod]
         public void Index_Returns_All_JournalsSubscribers()
         {
@@ -31,6 +34,9 @@ namespace Medico.Web.Tests.Controllers
             Assert.AreEqual(2, model.Count());
         }
 
+        /// <summary>
+        /// Subscribes the success.
+        /// </summary>
         [TestMethod]
         public void Subscribe_Success()
         {
@@ -47,6 +53,9 @@ namespace Medico.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
         }
 
+        /// <summary>
+        /// Subscribes the failure.
+        /// </summary>
         [TestMethod]
         public void Subscribe_Failure()
         {
@@ -74,6 +83,9 @@ namespace Medico.Web.Tests.Controllers
                 Assert.Fail("Expected exception Exception, was not thrown");
         }
 
+        /// <summary>
+        /// Unsubscribes the success.
+        /// </summary>
         [TestMethod]
         public void Unsubscribe_Success()
         {
@@ -90,6 +102,9 @@ namespace Medico.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
         }
 
+        /// <summary>
+        /// Unsubscribes the failure.
+        /// </summary>
         [TestMethod]
         public void Unsubscribe_Failure()
         {
