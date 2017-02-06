@@ -201,7 +201,7 @@ namespace Medico.Web.Controllers
                 if (!opStatus.Status)
                     throw new System.Web.Http.HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError));
 
-                return RedirectToAction("IssueList");
+                return RedirectToAction("IssueList", new { id = Convert.ToInt32(this.Session["JournalId"]) });
             }
             else
                 return View(issue);
