@@ -1,20 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using Medico.Model;
-using Medico.Repository.DataContext;
 using Medico.Repository.Interfaces;
 using Telerik.JustMock;
-using Telerik.JustMock.Helpers;
 
 namespace Medico.Web.Tests.Repositories
 {
+    /// <summary>
+    /// Journal Repository Mock
+    /// </summary>
     public class JournalRepositoryMock
     {
+        /// <summary>
+        /// Gets the journal repo mock.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository GetJournalRepoMock()
         {
             return Mock.Create<IJournalRepository>();
         }
 
+        /// <summary>
+        /// Gets all journals repo mock.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository GetAllJournalsRepoMock()
         {
             var journalRepository = this.GetJournalRepoMock();
@@ -25,6 +34,10 @@ namespace Medico.Web.Tests.Repositories
             return journalRepository;
         }
 
+        /// <summary>
+        /// Fakes the journals.
+        /// </summary>
+        /// <returns></returns>
         private List<Journal> FakeJournals()
         {
             List<Journal> journalList = new List<Journal>
@@ -52,6 +65,10 @@ namespace Medico.Web.Tests.Repositories
             return journalList;
         }
 
+        /// <summary>
+        /// Gets the journal by identifier repo mock.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository GetJournalByIdRepoMock()
         {
             var journalRepository = this.GetJournalRepoMock();
@@ -74,6 +91,10 @@ namespace Medico.Web.Tests.Repositories
             return journalRepository;
         }
 
+        /// <summary>
+        /// Gets the null journal by identifier repo mock.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository GetNullJournalByIdRepoMock()
         {
             var journalRepository = this.GetJournalRepoMock();
@@ -91,6 +112,10 @@ namespace Medico.Web.Tests.Repositories
             return journalRepository;
         }
 
+        /// <summary>
+        /// Adds the journal repo mock failure scenario.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository AddJournalRepoMock_Failure()
         {
             var journalRepository = this.GetJournalRepoMock();
@@ -100,6 +125,10 @@ namespace Medico.Web.Tests.Repositories
             return journalRepository;
         }
 
+        /// <summary>
+        /// Deletes the journal repo mock success scenario.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository DeleteJournalRepoMock_Success()
         {
             var journalRepository = this.GetJournalRepoMock();
@@ -109,6 +138,10 @@ namespace Medico.Web.Tests.Repositories
             return journalRepository;
         }
 
+        /// <summary>
+        /// Deletes the journal repo mock failure scenario.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository DeleteJournalRepoMock_Failure()
         {
             var journalRepository = this.GetJournalRepoMock();
@@ -118,6 +151,10 @@ namespace Medico.Web.Tests.Repositories
             return journalRepository;
         }
 
+        /// <summary>
+        /// Edits the journal repo mock success scenario.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository EditJournalRepoMock_Success()
         {
             var journalRepository = this.GetJournalRepoMock();
@@ -127,6 +164,10 @@ namespace Medico.Web.Tests.Repositories
             return journalRepository;
         }
 
+        /// <summary>
+        /// Edits the journal repo mock failure scenario.
+        /// </summary>
+        /// <returns></returns>
         public IJournalRepository EditJournalRepoMock_Failure()
         {
             var journalRepository = this.GetJournalRepoMock();

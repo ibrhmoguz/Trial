@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Mvc;
+using System.Web.Routing;
 using AutoMapper;
 using Medico.Model;
 using Medico.Repository.Interfaces;
@@ -117,6 +118,11 @@ namespace Medico.Web.Controllers
         protected override void OnException(ExceptionContext filterContext)
         {
             base.OnException(filterContext);
+        }
+
+        public ActionResult IssueList(int id)
+        {
+            return RedirectToAction("List", "Issue", id);
         }
     }
 }

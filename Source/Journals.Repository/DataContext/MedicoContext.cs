@@ -14,6 +14,7 @@ namespace Medico.Repository.DataContext
 
         public DbSet<Journal> Journals { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Issue> Issues { get; set; }
         public bool IsDisposed { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -22,6 +23,7 @@ namespace Medico.Repository.DataContext
             base.Configuration.LazyLoadingEnabled = false;
             modelBuilder.Entity<Journal>().ToTable("Journals");
             modelBuilder.Entity<Subscription>().ToTable("Subscriptions");
+            modelBuilder.Entity<Issue>().ToTable("Issues");
             base.OnModelCreating(modelBuilder);
         }
 

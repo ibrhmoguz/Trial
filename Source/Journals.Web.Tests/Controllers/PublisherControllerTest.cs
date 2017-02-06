@@ -12,7 +12,9 @@ using Telerik.JustMock;
 
 namespace Medico.Web.Tests.Controllers
 {
-
+    /// <summary>
+    /// The test container class of Publisher controller.
+    /// </summary>
     [TestClass]
     public class PublisherControllerTest
     {

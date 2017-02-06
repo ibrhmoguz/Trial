@@ -7,13 +7,24 @@ using Telerik.JustMock.Helpers;
 
 namespace Medico.Web.Tests.Repositories
 {
+    /// <summary>
+    /// Subscriber Repository Mock
+    /// </summary>
     public class SubscriberRepositoryMock
     {
+        /// <summary>
+        /// Gets the subscription repo mock.
+        /// </summary>
+        /// <returns></returns>
         public ISubscriptionRepository GetSubscriptionRepoMock()
         {
             return Mock.Create<ISubscriptionRepository>();
         }
 
+        /// <summary>
+        /// Gets the journals for subscriber success.
+        /// </summary>
+        /// <returns></returns>
         public ISubscriptionRepository GetJournalsForSubscriber_Success()
         {
             var userMock = new MemberShipRepositoryMock().GetMembershipUserMockObject();
@@ -30,6 +41,10 @@ namespace Medico.Web.Tests.Repositories
             return subscriptionRepository;
         }
 
+        /// <summary>
+        /// Gets the journals for subscriber failure scenario.
+        /// </summary>
+        /// <returns></returns>
         public ISubscriptionRepository GetJournalsForSubscriber_Failure()
         {
             var userMock = new MemberShipRepositoryMock().GetMembershipUserMockObject();
@@ -41,6 +56,10 @@ namespace Medico.Web.Tests.Repositories
             return subscriptionRepository;
         }
 
+        /// <summary>
+        /// Subscribes the success scenario.
+        /// </summary>
+        /// <returns></returns>
         public ISubscriptionRepository Subscribe_Success()
         {
             var userMock = new MemberShipRepositoryMock().GetMembershipUserMockObject();
@@ -52,6 +71,10 @@ namespace Medico.Web.Tests.Repositories
             return subscriptionRepository;
         }
 
+        /// <summary>
+        /// Subscribes the failure scenario.
+        /// </summary>
+        /// <returns></returns>
         public ISubscriptionRepository Subscribe_Failure()
         {
             var userMock = new MemberShipRepositoryMock().GetMembershipUserMockObject();
@@ -63,6 +86,10 @@ namespace Medico.Web.Tests.Repositories
             return subscriptionRepository;
         }
 
+        /// <summary>
+        /// Uns the subscribe success scenario.
+        /// </summary>
+        /// <returns></returns>
         public ISubscriptionRepository UnSubscribe_Success()
         {
             var userMock = new MemberShipRepositoryMock().GetMembershipUserMockObject();
@@ -74,6 +101,10 @@ namespace Medico.Web.Tests.Repositories
             return subscriptionRepository;
         }
 
+        /// <summary>
+        /// Uns the subscribe failure scenario.
+        /// </summary>
+        /// <returns></returns>
         public ISubscriptionRepository UnSubscribe_Failure()
         {
             var userMock = new MemberShipRepositoryMock().GetMembershipUserMockObject();
@@ -85,6 +116,10 @@ namespace Medico.Web.Tests.Repositories
             return subscriptionRepository;
         }
 
+        /// <summary>
+        /// Fakes the subscription.
+        /// </summary>
+        /// <returns></returns>
         private List<Subscription> FakeSubscription()
         {
             List<Subscription> subscriptions = new List<Subscription>
@@ -126,6 +161,10 @@ namespace Medico.Web.Tests.Repositories
             return subscriptions;
         }
 
+        /// <summary>
+        /// Fakes the journals.
+        /// </summary>
+        /// <returns></returns>
         private List<Journal> FakeJournals()
         {
             List<Journal> journalList = new List<Journal>

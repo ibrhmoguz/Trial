@@ -11,6 +11,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Medico.Web.Tests.Controllers
 {
+    /// <summary>
+    /// The test container class of Subscriber controller.
+    /// </summary>
     [TestClass]
     public class SubscriberControllerTest
     {

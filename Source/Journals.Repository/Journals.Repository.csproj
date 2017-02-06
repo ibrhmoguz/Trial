@@ -75,10 +75,12 @@
     <Compile Include="DataContext\DataInitializer.cs" />
     <Compile Include="DataContext\DropCreateDatabaseAlwaysInitializer.cs" />
     <Compile Include="DataContext\SimpleMembershipInitializer.cs" />
+    <Compile Include="Interfaces\IIssueRepository.cs" />
     <Compile Include="Interfaces\IDisposedTracker.cs" />
     <Compile Include="Interfaces\IStaticMembershipService.cs" />
     <Compile Include="Interfaces\ISubscriptionRepository.cs" />
     <Compile Include="Interfaces\IJournalRepository.cs" />
+    <Compile Include="Repo\IssueRepository.cs" />
     <Compile Include="Repo\StaticMembershipService.cs" />
     <Compile Include="Repo\SubscriptionRepository.cs" />
     <Compile Include="Repo\JournalRepository.cs" />
