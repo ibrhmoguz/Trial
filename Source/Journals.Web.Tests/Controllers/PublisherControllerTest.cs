@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Web;
+using System.Web.Http;
 using AutoMapper;
 using Medico.Model;
 using Medico.Web.Controllers;
@@ -349,7 +350,9 @@ namespace Medico.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
 
-       
+        /// <summary>
+        /// Creates the issue model state is valid success.
+        /// </summary>
         [TestMethod]
         public void CreateIssue_ModelStateIsValid_Success()
         {
@@ -358,8 +361,11 @@ namespace Medico.Web.Tests.Controllers
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().GetJournalRepoMock();
             var issueRepository = new IssueRepositoryMock().AddIssueRepoMock_Success();
+            var mockContext = Mock.Create<ControllerContext>();
+            Mock.Arrange(() => mockContext.HttpContext.Session["JournalId"]).Returns(1);
+
             PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
-            controller.Session["JournalId"] = 1;
+            controller.ControllerContext = mockContext;
 
             //Act
             var result = controller.CreateIssue(issueViewModel);
@@ -368,7 +374,9 @@ namespace Medico.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
         }
 
-
+        /// <summary>
+        /// Creates the issue model state is valid failure.
+        /// </summary>
         [TestMethod]
         public void CreateIssue_ModelStateIsValid_Failure()
         {
@@ -378,8 +386,11 @@ namespace Medico.Web.Tests.Controllers
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().GetJournalRepoMock();
             var issueRepository = new IssueRepositoryMock().AddIssueRepoMock_Failure();
+            var mockContext = Mock.Create<ControllerContext>();
+            Mock.Arrange(() => mockContext.HttpContext.Session["JournalId"]).Returns(1);
+
             PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
-            controller.Session["JournalId"] = 1;
+            controller.ControllerContext = mockContext;
 
             try
             {
@@ -398,7 +409,9 @@ namespace Medico.Web.Tests.Controllers
                 Assert.Fail("Expected exception Exception, was not thrown");
         }
 
-
+        /// <summary>
+        /// Creates the issue model state is no valid.
+        /// </summary>
         [TestMethod]
         public void CreateIssue_ModelStateIsNoValid()
         {
@@ -407,10 +420,12 @@ namespace Medico.Web.Tests.Controllers
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().GetJournalRepoMock();
             var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
+            var mockContext = Mock.Create<ControllerContext>();
+            Mock.Arrange(() => mockContext.HttpContext.Session["JournalId"]).Returns(1);
 
             PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
             controller.ViewData.ModelState.AddModelError("Key", "ErrorMessage");
-            controller.Session["JournalId"] = 1;
+            controller.ControllerContext = mockContext;
 
             //Act
             var result = controller.CreateIssue(issueViewModel);
@@ -419,16 +434,21 @@ namespace Medico.Web.Tests.Controllers
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
 
+        /// <summary>
+        /// Issues the list get issuesof journal.
+        /// </summary>
         [TestMethod]
         public void IssueList_GetIssuesofJournal()
         {
             //Arrange
-            var issueViewModel = Mock.Create<IssueViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().GetJournalRepoMock();
             var issueRepository = new IssueRepositoryMock().GetIssuesofJournal();
+            var mockContext = Mock.Create<ControllerContext>();
+            Mock.Arrange(() => mockContext.HttpContext.Session["JournalId"]).Returns(1);
 
             PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
+            controller.ControllerContext = mockContext;
 
             //Act
             var result = controller.IssueList(1);

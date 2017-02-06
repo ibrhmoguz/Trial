@@ -11,12 +11,19 @@ namespace Medico.Web.Tests.Repositories
     /// </summary>
     public class IssueRepositoryMock
     {
-
+        /// <summary>
+        /// Gets the issue repo mock.
+        /// </summary>
+        /// <returns></returns>
         public IIssueRepository GetIssueRepoMock()
         {
             return Mock.Create<IIssueRepository>();
         }
 
+        /// <summary>
+        /// Gets the issuesof journal.
+        /// </summary>
+        /// <returns></returns>
         public IIssueRepository GetIssuesofJournal()
         {
             var issueRepository = this.GetIssueRepoMock();
@@ -26,6 +33,10 @@ namespace Medico.Web.Tests.Repositories
             return issueRepository;
         }
 
+        /// <summary>
+        /// Adds the issue repo mock success.
+        /// </summary>
+        /// <returns></returns>
         public IIssueRepository AddIssueRepoMock_Success()
         {
             var issueRepository = this.GetIssueRepoMock();
@@ -35,6 +46,10 @@ namespace Medico.Web.Tests.Repositories
             return issueRepository;
         }
 
+        /// <summary>
+        /// Adds the issue repo mock failure.
+        /// </summary>
+        /// <returns></returns>
         public IIssueRepository AddIssueRepoMock_Failure()
         {
             var issueRepository = this.GetIssueRepoMock();
@@ -44,7 +59,10 @@ namespace Medico.Web.Tests.Repositories
             return issueRepository;
         }
 
-
+        /// <summary>
+        /// Fakes the issues.
+        /// </summary>
+        /// <returns></returns>
         private List<Issue> FakeIssues()
         {
             List<Issue> issueList = new List<Issue>

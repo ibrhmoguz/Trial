@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Mvc;
-using System.Web.Routing;
 using AutoMapper;
 using Medico.Model;
 using Medico.Repository.Interfaces;
@@ -12,13 +11,34 @@ using Medico.Web.Helpers;
 
 namespace Medico.Web.Controllers
 {
+    /// <summary>
+    /// The publisher controller.
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     [AuthorizeRedirect(Roles = "Publisher")]
     public class PublisherController : Controller
     {
+        /// <summary>
+        /// The journal repository
+        /// </summary>
         private IJournalRepository _journalRepository;
+
+        /// <summary>
+        /// The membership service
+        /// </summary>
         private IStaticMembershipService _membershipService;
+
+        /// <summary>
+        /// The issue repository
+        /// </summary>
         private IIssueRepository _issueRepository;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PublisherController"/> class.
+        /// </summary>
+        /// <param name="journalRepo">The journal repo.</param>
+        /// <param name="membershipService">The membership service.</param>
+        /// <param name="issueRepository">The issue repository.</param>
         public PublisherController(IJournalRepository journalRepo, IStaticMembershipService membershipService, IIssueRepository issueRepository)
         {
             _journalRepository = journalRepo;
@@ -123,6 +143,11 @@ namespace Medico.Web.Controllers
             base.OnException(filterContext);
         }
 
+        /// <summary>
+        /// Issues the list.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public ActionResult IssueList(int id)
         {
             List<Issue> issueList = _issueRepository.GetIssuesofJournal(id);
@@ -141,11 +166,22 @@ namespace Medico.Web.Controllers
             return View(issueViewModelList);
         }
 
+        /// <summary>
+        /// Creates the issue.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult CreateIssue()
         {
             return View();
         }
 
+        /// <summary>
+        /// Creates the issue.
+        /// </summary>
+        /// <param name="issue">The issue.</param>
+        /// <returns></returns>
+        /// <exception cref="System.Web.Http.HttpResponseException"></exception>
+        /// <exception cref="HttpResponseMessage"></exception>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateIssue(IssueViewModel issue)
