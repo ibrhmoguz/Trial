@@ -22,6 +22,7 @@ namespace Medico.Web.IoC
             _Instance.RegisterType<IJournalRepository, JournalRepository>(new HierarchicalLifetimeManager());
             _Instance.RegisterType<ISubscriptionRepository, SubscriptionRepository>(new HierarchicalLifetimeManager());
             _Instance.RegisterType<IStaticMembershipService, StaticMembershipService>(new HierarchicalLifetimeManager());
+            _Instance.RegisterType<IIssueRepository, IssueRepository>(new HierarchicalLifetimeManager());
             return _Instance;
         }
     }

@@ -28,9 +28,10 @@ namespace Medico.Web.Tests.Controllers
             Mapper.CreateMap<Journal, JournalViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().GetAllJournalsRepoMock();
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
 
             //Act
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
             ViewResult actionResult = (ViewResult)controller.Index();
             var model = actionResult.Model as IEnumerable<JournalViewModel>;
 
@@ -47,7 +48,8 @@ namespace Medico.Web.Tests.Controllers
             //Arrange
             var membershipRepository = new MemberShipRepositoryMock().GetStaticMembershipServiceMockObject();
             var journalRepository = new JournalRepositoryMock().GetJournalByIdRepoMock();
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             //Act
             var result = controller.GetFile(1);
@@ -67,7 +69,8 @@ namespace Medico.Web.Tests.Controllers
             var exceptionIsThrown = false;
             var membershipRepository = new MemberShipRepositoryMock().GetStaticMembershipServiceMockObject();
             var journalRepository = new JournalRepositoryMock().GetNullJournalByIdRepoMock();
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             try
             {
@@ -97,7 +100,8 @@ namespace Medico.Web.Tests.Controllers
             var journalViewModal = Mock.Create<JournalViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().AddJournalRepoMock_Success();
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             //Act
             var result = controller.Create(journalViewModal);
@@ -118,7 +122,8 @@ namespace Medico.Web.Tests.Controllers
             var journalViewModal = Mock.Create<JournalViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().AddJournalRepoMock_Failure();
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             try
             {
@@ -147,7 +152,8 @@ namespace Medico.Web.Tests.Controllers
             var journalViewModal = Mock.Create<JournalViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().AddJournalRepoMock_Failure();
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
             controller.ViewData.ModelState.AddModelError("Key", "ErrorMessage");
 
             //Act
@@ -167,7 +173,8 @@ namespace Medico.Web.Tests.Controllers
             Mapper.CreateMap<Journal, JournalViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().GetJournalByIdRepoMock();
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             //Act
             var result = controller.Delete(1);
@@ -193,8 +200,9 @@ namespace Medico.Web.Tests.Controllers
 
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().DeleteJournalRepoMock_Success();
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
 
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             //Act
             var result = controller.Delete(journalViewModal);
@@ -216,8 +224,9 @@ namespace Medico.Web.Tests.Controllers
             var journalViewModal = Mock.Create<JournalViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().DeleteJournalRepoMock_Failure();
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
 
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             try
             {
@@ -246,8 +255,9 @@ namespace Medico.Web.Tests.Controllers
             Mapper.CreateMap<Journal, JournalUpdateViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().GetJournalByIdRepoMock();
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
 
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             //Act
             var result = controller.Edit(1);
@@ -273,8 +283,9 @@ namespace Medico.Web.Tests.Controllers
             Mapper.CreateMap<JournalUpdateViewModel, Journal>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().EditJournalRepoMock_Success();
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
 
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             //Act
             var result = controller.Edit(journalViewModal);
@@ -295,8 +306,9 @@ namespace Medico.Web.Tests.Controllers
             var journalViewModal = Mock.Create<JournalUpdateViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().EditJournalRepoMock_Failure();
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
 
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
 
             try
             {
@@ -325,12 +337,101 @@ namespace Medico.Web.Tests.Controllers
             var journalUpdateViewModal = Mock.Create<JournalUpdateViewModel>();
             var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
             var journalRepository = new JournalRepositoryMock().EditJournalRepoMock_Failure();
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
 
-            PublisherController controller = new PublisherController(journalRepository, membershipRepository);
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
             controller.ViewData.ModelState.AddModelError("Key", "ErrorMessage");
 
             //Act
             var result = controller.Edit(journalUpdateViewModal);
+
+            //Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+       
+        [TestMethod]
+        public void CreateIssue_ModelStateIsValid_Success()
+        {
+            //Arrange
+            var issueViewModel = Mock.Create<IssueViewModel>();
+            var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
+            var journalRepository = new JournalRepositoryMock().GetJournalRepoMock();
+            var issueRepository = new IssueRepositoryMock().AddIssueRepoMock_Success();
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
+            controller.Session["JournalId"] = 1;
+
+            //Act
+            var result = controller.CreateIssue(issueViewModel);
+
+            //Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
+
+
+        [TestMethod]
+        public void CreateIssue_ModelStateIsValid_Failure()
+        {
+            //Arrange
+            var exceptionIsThrown = false;
+            var issueViewModel = Mock.Create<IssueViewModel>();
+            var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
+            var journalRepository = new JournalRepositoryMock().GetJournalRepoMock();
+            var issueRepository = new IssueRepositoryMock().AddIssueRepoMock_Failure();
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
+            controller.Session["JournalId"] = 1;
+
+            try
+            {
+                //Act
+                controller.CreateIssue(issueViewModel);
+            }
+            catch (Exception ex)
+            {
+                //Assert
+                Assert.IsInstanceOfType(ex, typeof(HttpResponseException));
+                exceptionIsThrown = true;
+            }
+
+            //Assert
+            if (!exceptionIsThrown)
+                Assert.Fail("Expected exception Exception, was not thrown");
+        }
+
+
+        [TestMethod]
+        public void CreateIssue_ModelStateIsNoValid()
+        {
+            //Arrange
+            var issueViewModel = Mock.Create<IssueViewModel>();
+            var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
+            var journalRepository = new JournalRepositoryMock().GetJournalRepoMock();
+            var issueRepository = new IssueRepositoryMock().GetIssueRepoMock();
+
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
+            controller.ViewData.ModelState.AddModelError("Key", "ErrorMessage");
+            controller.Session["JournalId"] = 1;
+
+            //Act
+            var result = controller.CreateIssue(issueViewModel);
+
+            //Assert
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void IssueList_GetIssuesofJournal()
+        {
+            //Arrange
+            var issueViewModel = Mock.Create<IssueViewModel>();
+            var membershipRepository = new MemberShipRepositoryMock().GetUserMockObject();
+            var journalRepository = new JournalRepositoryMock().GetJournalRepoMock();
+            var issueRepository = new IssueRepositoryMock().GetIssuesofJournal();
+
+            PublisherController controller = new PublisherController(journalRepository, membershipRepository, issueRepository);
+
+            //Act
+            var result = controller.IssueList(1);
 
             //Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));

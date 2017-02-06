@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Mvc;
@@ -16,11 +17,13 @@ namespace Medico.Web.Controllers
     {
         private IJournalRepository _journalRepository;
         private IStaticMembershipService _membershipService;
+        private IIssueRepository _issueRepository;
 
-        public PublisherController(IJournalRepository journalRepo, IStaticMembershipService membershipService)
+        public PublisherController(IJournalRepository journalRepo, IStaticMembershipService membershipService, IIssueRepository issueRepository)
         {
             _journalRepository = journalRepo;
             _membershipService = membershipService;
+            _issueRepository = issueRepository;
         }
 
         public ActionResult Index()
@@ -30,7 +33,7 @@ namespace Medico.Web.Controllers
             List<Journal> allJournals = _journalRepository.GetAllJournals(userId);
             var journals = Mapper.Map<List<Journal>, List<JournalViewModel>>(allJournals);
             return View(journals);
-        }   
+        }
 
         public ActionResult Create()
         {
@@ -92,7 +95,7 @@ namespace Medico.Web.Controllers
             var journal = _journalRepository.GetJournalById(Id);
 
             var selectedJournal = Mapper.Map<Journal, JournalUpdateViewModel>(journal);
-            
+
             return View(selectedJournal);
         }
 
@@ -122,7 +125,50 @@ namespace Medico.Web.Controllers
 
         public ActionResult IssueList(int id)
         {
-            return RedirectToAction("List", "Issue", id);
+            List<Issue> issueList = _issueRepository.GetIssuesofJournal(id);
+            var issueViewModelList = new List<IssueViewModel>();
+            foreach (var issue in issueList)
+            {
+                issueViewModelList.Add(new IssueViewModel()
+                {
+                    JournalId = issue.JournalId,
+                    Id = issue.Id,
+                    Text = issue.Text,
+                    FileName = issue.FileName
+                });
+            }
+            this.Session.Add("JournalId", id);
+            return View(issueViewModelList);
+        }
+
+        public ActionResult CreateIssue()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateIssue(IssueViewModel issue)
+        {
+            if (ModelState.IsValid)
+            {
+                var newIssue = new Issue()
+                {
+                    Text = issue.Text,
+                    FileName = issue.FileName,
+                    JournalId = Convert.ToInt32(this.Session["JournalId"]),
+                    CreationDate = DateTime.Now
+                };
+                IssueHelper.PopulateFile(issue.File, newIssue);
+
+                var opStatus = _issueRepository.AddIssue(newIssue);
+                if (!opStatus.Status)
+                    throw new System.Web.Http.HttpResponseException(new HttpResponseMessage(HttpStatusCode.InternalServerError));
+
+                return RedirectToAction("IssueList");
+            }
+            else
+                return View(issue);
         }
     }
 }

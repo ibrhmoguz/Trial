@@ -42,27 +42,17 @@ namespace Medico.Model
         public int JournalId { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of the content.
-        /// </summary>
-        /// <value>
-        /// The type of the content.
-        /// </value>
-        public string ContentType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the content.
-        /// </summary>
-        /// <value>
-        /// The content.
-        /// </value>
-        public byte[] Content { get; set; }
-
-        /// <summary>
         /// Gets or sets the creation date.
         /// </summary>
         /// <value>
         /// The creation date.
         /// </value>
         public DateTime CreationDate { get; set; }
+
+        public string FileName { get; set; }
+
+        public string ContentType { get; set; }
+
+        public byte[] Content { get; set; }
     }
 }

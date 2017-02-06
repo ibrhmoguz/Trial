@@ -226,7 +226,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
     <Compile Include="Controllers\SubscriberController.cs" />
     <Compile Include="Filters\AuthorizeRedirectAttribute.cs" />
@@ -376,7 +375,7 @@
     <Content Include="Views\Subscriber\Index.cshtml" />
     <Content Include="Views\Error\RequestLengthExceeded.cshtml" />
     <Content Include="Views\Publisher\IssueList.cshtml" />
-    <Content Include="Views\Issue\List.cshtml" />
+    <Content Include="Views\Publisher\CreateIssue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
